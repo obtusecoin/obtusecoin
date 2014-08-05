@@ -1984,7 +1984,7 @@ bool LoadBlockIndex(bool fAllowNew)
         pchMessageStart[1] = 0xc2;
         pchMessageStart[2] = 0xb6;
         pchMessageStart[3] = 0xda;
-        hashGenesisBlock = uint256("0xb98446627c0c1e15702fc47d59a3ea13db677a5a235cfed88a2bd8225cbf4c2d");
+        hashGenesisBlock = uint256("0x0fa2fad9e53e51c5b57e9334dee4427ed26e0bf9c5c237223d5b54888285ba99");
     }
 
     //
@@ -2002,18 +2002,6 @@ bool LoadBlockIndex(bool fAllowNew)
     {
         if (!fAllowNew)
             return false;
-    
-	// Genesis block:
-	// block.nTime = 1366559428 
-	// block.nNonce = 2085386442 
-	// block.GetHash = 384b060671f4a93948e9c168216dadb0ca2fbc54aa11c86b0345b6af1c59b2f5
-	// CBlock(hash=384b060671f4a93948e9, PoW=00000951e146b0026411, ver=1,
-	//  hashPrevBlock=00000000000000000000, hashMerkleRoot=5a2e19825b,
-	//  nTime=1366559428, nBits=1e0ffff0, nNonce=2085386442, vtx=1)
-	// CTransaction(hash=5a2e19825b, ver=1, vin.size=1, vout.size=1, nLockTime=0)
-	// CTxIn(COutPoint(0000000000, -1), coinbase 04ffff001d010441746f646f3a207265706c616365207769746820736f6d657468696e67207468617420656e7375726573206e6f207072656d696e696e6720746f6f6b20706c616365)
-	// CTxOut(error)
-	// vMerkleTree: 5a2e19825b
         
         // Genesis block
         const char* pszTimestamp = "Grand Canyon investigating squirrel kicking video";
@@ -2035,14 +2023,14 @@ bool LoadBlockIndex(bool fAllowNew)
         if (fTestNet)
         {
             block.nTime    = 1407235017;
-            block.nNonce   = 386402991;
+            block.nNonce   = 387989706;
         }
 
         //// debug print
         printf("%s\n", block.GetHash().ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0x77244cc96438198bd9099a0830f7c8264a0abe87c2f89480ddf436d5d8f0a1a6"));
+        assert(block.hashMerkleRoot == uint256("0xfffb2feaef873345c5c1ce3ba1f464457c344b9aeeb3812957322567ae1da32e"));
 
         // If genesis block hash does not match, then generate new genesis hash.
         if (true && block.GetHash() != hashGenesisBlock)
