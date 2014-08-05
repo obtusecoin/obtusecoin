@@ -828,10 +828,10 @@ uint256 static GetOrphanRoot(const CBlock* pblock)
 
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
-    int64 nSubsidy = 1234 * COIN;
+    int64 nSubsidy = 50 * COIN;
 
 
-    if(nHeight > 60000) // no block reward after 60000
+    if(nHeight > 10000) // no block reward after 10000
         nSubsidy = 0;
 
     return nSubsidy + nFees;
@@ -1807,8 +1807,8 @@ bool CBlock::AcceptBlock()
             return DoS(10, error("AcceptBlock() : contains a non-final transaction"));
 
     // Check that the block chain matches the known block chain up to a checkpoint
-    if (!Checkpoints::CheckBlock(nHeight, hash))
-        return DoS(100, error("AcceptBlock() : rejected by checkpoint lockin at %d", nHeight));
+    //if (!Checkpoints::CheckBlock(nHeight, hash))
+    //    return DoS(100, error("AcceptBlock() : rejected by checkpoint lockin at %d", nHeight));
 
     // Write block to history file
     if (!CheckDiskSpace(::GetSerializeSize(*this, SER_DISK, CLIENT_VERSION)))
@@ -1981,10 +1981,9 @@ bool LoadBlockIndex(bool fAllowNew)
 {
     if (fTestNet)
     {
-        pchMessageStart[0] = 0xfb;
-        pchMessageStart[1] = 0xc0;
-        pchMessageStart[2] = 0xb8;
-        pchMessageStart[3] = 0xdb;
+        pchMessageStart[1] = 0xc2;
+        pchMessageStart[2] = 0xb6;
+        pchMessageStart[3] = 0xda;
         hashGenesisBlock = uint256("0xb98446627c0c1e15702fc47d59a3ea13db677a5a235cfed88a2bd8225cbf4c2d");
     }
 
@@ -2017,7 +2016,7 @@ bool LoadBlockIndex(bool fAllowNew)
 	// vMerkleTree: 5a2e19825b
         
         // Genesis block
-        const char* pszTimestamp = "One day after American Aid Worker Stricken with Ebola En Route to US";
+        const char* pszTimestamp = "Grand Canyon investigating squirrel kicking video";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -2029,13 +2028,13 @@ bool LoadBlockIndex(bool fAllowNew)
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1407105341;
+        block.nTime    = 1407231315;
         block.nBits    = 0x1e0ffff0;
         block.nNonce   = 2087025173;
 
         if (fTestNet)
         {
-            block.nTime    = 1407105341;
+            block.nTime    = 1407231315;
             block.nNonce   = 386402991;
         }
 
