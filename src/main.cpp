@@ -2028,13 +2028,13 @@ bool LoadBlockIndex(bool fAllowNew)
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1407231315;
+        block.nTime    = 1407235017;
         block.nBits    = 0x1e0ffff0;
         block.nNonce   = 2087025173;
 
         if (fTestNet)
         {
-            block.nTime    = 1407231315;
+            block.nTime    = 1407235017;
             block.nNonce   = 386402991;
         }
 
